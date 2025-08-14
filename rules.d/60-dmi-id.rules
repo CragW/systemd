@@ -4,7 +4,6 @@ ACTION=="remove", GOTO="dmi_end"
 SUBSYSTEM!="dmi", GOTO="dmi_end"
 
 ENV{ID_SYS_VENDOR_IS_RUBBISH}!="1", ENV{ID_VENDOR}="$attr{sys_vendor}"
-ENV{ID_SYSFS_ATTRIBUTE_FAMILY}=="", ENV{ID_FAMILY}="$attr{product_family}"
 ENV{ID_SYSFS_ATTRIBUTE_MODEL}=="", ENV{ID_PRODUCT_NAME_IS_RUBBISH}!="1", ENV{ID_MODEL}="$attr{product_name}"
 ENV{ID_SYSFS_ATTRIBUTE_MODEL}=="product_name", ENV{ID_MODEL}="$attr{product_name}"
 ENV{ID_SYSFS_ATTRIBUTE_MODEL}=="product_version", ENV{ID_MODEL}="$attr{product_version}"
@@ -18,6 +17,9 @@ ENV{ID_PRODUCT_SKU_IS_RUBBISH}!="1", ENV{ID_SKU}="$attr{product_sku}"
 # hardware version
 ENV{ID_PRODUCT_VERSION_IS_RUBBISH}!="1", ENV{ID_HARDWARE_VERSION}="$attr{product_version}"
 ENV{ID_HARDWARE_VERSION}=="", ENV{ID_BOARD_VERSION_IS_RUBBISH}!="1", ENV{ID_HARDWARE_VERSION}="$attr{board_version}"
+
+# hardware family
+ENV{ID_PRODUCT_FAMILY_IS_RUBBISH}!="1", ENV{ID_FAMILY}="$attr{product_family}"
 
 # chassis asset tag
 ENV{MODALIAS}!="", ATTR{chassis_asset_tag}!="", IMPORT{builtin}="hwdb '$attr{modalias}cat$attr{chassis_asset_tag}:'"
